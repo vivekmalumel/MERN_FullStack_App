@@ -13,6 +13,7 @@ export const getItems=()=>dispatch=>{
 
     export const addItem=(item)=>dispatch=>
     {
+        dispatch(setItemsLoading());
         axios
             .post('/api/items',item)
             .then(res=>dispatch({
@@ -22,6 +23,7 @@ export const getItems=()=>dispatch=>{
     }
 
     export const deleteItem=(itemId)=>dispatch=>{
+        dispatch(setItemsLoading());
     axios
         .delete(`/api/items/${itemId}`)
         .then(res=>dispatch({

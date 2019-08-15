@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 import {Container,ListGroup,ListGroupItem,Button} from 'reactstrap';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 import {useDispatch,useSelector} from 'react-redux';
@@ -8,12 +8,12 @@ const ShoppingList = () => {
     const items=useSelector(state=>state.item.items);
 
     const dispatch=useDispatch();
-    const getAllItems=()=>dispatch(getItems());
     const deleteAnItem=(itemId)=>dispatch(deleteItem(itemId));
 
     useEffect(() => {
+        const getAllItems=()=>dispatch(getItems());
         getAllItems();
-    }, [])
+    }, [dispatch])
 
     return (
         <Container>
